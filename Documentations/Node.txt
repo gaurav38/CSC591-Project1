@@ -1,0 +1,47 @@
+typedef unsigned_int32 Label;
+
+class Node {
+	Label label;	//label of the node
+	vector<unsigned_int32> neighbors;	//vector to store the neighbors of the node
+	std::unordered_map<Label,_int16> mymap;		//hashmap to store the list of labels and their count
+	unsigned_int32 count;
+	
+	methods:
+	
+	Node(Label node_label) {
+		//Constructor to initialize Node with label node_label
+		// insert(node_label,1) in mymap
+	}
+	
+	Add_Neighbor(Label x) {
+		//Add x to the vector of neighbors
+	}
+	
+	Find_Community(Label x) {
+		//Return true if community x is in mymap
+	}
+	
+	Add_Community(Label x) {
+		//insert(x,1) to mymap if x not already present, increment the count of x otherwise
+	}
+	
+	Get_Community(Label x) {
+		//Return the count of the community x from mymap
+	}
+	
+	Get_Count_All() {
+		//Return <label,count> of all different labels in mymap
+	}
+	
+	Get_Max_Label() {
+		//Return the label having the highest count in mymap
+	}
+	
+	Find_Distribution_All() {
+		//Calculate probability distribution of all the labels in mymap
+	}
+}
+		
+	
+	
+	
