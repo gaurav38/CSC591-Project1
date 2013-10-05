@@ -1,69 +1,44 @@
-#include <unordered_map>
-##include <vector>
 #ifndef NODE_H
 #define NODE_H
 
-typedef unsigned_int32 Label;
 
 class Node
 {
     public:
-        Node(Lable node_label)
-        {
-            label = node_label;
-            std::pair<Label,unsigned_int32> community(label,1);
-            mymap.insert(community);
-        }
+        /** Default constructor */
+        Node();
+        /** Default destructor */
         virtual ~Node();
-
+        /** Access label
+         * \return The current value of label
+         */
         Label Getlabel() { return label; }
-
+        /** Access neighbors
+         * \return The current value of neighbors
+         */
         vector<unsigned_int> Getneighbors() { return neighbors; }
-
-        void Addneighbor(Label x)
-        {
-            neighbors.insert(val);
-        }
-
-        unsigned_int32 Getcount() { return count; }
-
-        bool isCommunityPresent(Label x)
-        {
-            std::unordered_map<Label,int>::const_iterator got = mymap.find(x);
-            got == mymap.end()? return false : return true;
-        }
-
-        int GetCommunityCount(Label x)
-        {
-            if(isCommunityPresent(x))
-            {
-                std::unordered_map<Label,int>::const_iterator got = mymap.find(x);
-                return got->second;
-            }
-            else
-                return 0;
-        }
-
-        void AddCommunity(Label x)
-        {
-            if(isCommunityPresent(x))
-            {
-                std::unordered_map<Label,int>::const_iterator got = mymap.find(x);
-                got->second++;
-            }
-            else
-            {
-                std::pair<Label,unsigned_int32> community(label,1);
-                mymap.insert(community);
-            }
-        }
-
+        /** Set neighbors
+         * \param val New value to set
+         */
+        void Setneighbors(vector<unsigned_int> val) { neighbors = val; }
+        /** Access mymap
+         * \return The current value of mymap
+         */
+        std::unordered_map<Label,int> Getmymap() { return mymap; }
+        /** Set mymap
+         * \param val New value to set
+         */
+        void Setmymap(std::unordered_map<Label,int> val) { mymap = val; }
+        /** Access count;
+         * \return The current value of count;
+         */
+        unsigned_int32 Getcount;() { return count;; }
     protected:
     private:
-        Label label;
-        vector<unsigned_int> neighbors;
-        std::unordered_map<Label,int> mymap;
-        unsigned_int32 count;
+        Label label; //!< Member variable "label"
+        vector<unsigned_int> neighbors; //!< Member variable "neighbors"
+        std::unordered_map<Label,int> mymap; //!< Member variable "mymap"
+        unsigned_int32 count;; //!< Member variable "count;"
 };
 
 #endif // NODE_H
