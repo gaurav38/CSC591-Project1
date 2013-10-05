@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1381001332 source:c:\users\gaurav\documents\github\csc591-project1\community_detection\src\node.cpp
+	"Node.h"
+	<map>
+	<vector>
+
+1381003029 c:\users\gaurav\documents\github\csc591-project1\community_detection\include\node.h
+	<iostream>
+	<vector>
+	<map>
+	<set>
+
+1381001309 source:c:\users\gaurav\documents\github\csc591-project1\community_detection\src\main.cpp
+	"Node.h"
+	<iostream>
+
