@@ -13,31 +13,39 @@ class Node {
 		// insert(node_label,1) in mymap
 	}
 	
-	Add_Neighbor(Label x) {
+	GetNeighbors() {
+		//return a vector of neighbors
+	}
+	
+	AddNeighbor(Label x) {
 		//Add x to the vector of neighbors
 	}
 	
-	Find_Community(Label x) {
+	GetCount() {
+		//Get the value of "count"
+	}
+	
+	isCommunityPresent(Label x) {
 		//Return true if community x is in mymap
 	}
 	
-	Add_Community(Label x) {
+	AddCommunity(Label x) {
 		//insert(x,1) to mymap if x not already present, increment the count of x otherwise
 	}
 	
-	Get_Community(Label x) {
+	GetCommunityCount(Label x) {
 		//Return the count of the community x from mymap
 	}
 	
-	Get_Count_All() {
+	GetCountAll() {
 		//Return <label,count> of all different labels in mymap
 	}
 	
-	Get_Max_Label() {
+	GetMaxLabel() {
 		//Return the label having the highest count in mymap
 	}
 	
-	Find_Distribution_All() {
+	FindDistributionAll() {
 		//Calculate probability distribution of all the labels in mymap
 	}
 }
