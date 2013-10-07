@@ -19,4 +19,14 @@ Graph::~Graph(){
 
 }
 
+void Graph::readGraph(string inFileName){
+	fstream fsin;
+	fsin.open(inFileName.c_str(),fstream::in);
+	if(fsin.is_open()){
+		//read it
+		fsin.close();
+	}else{
+		cout<<"File is not open for reading"<<endl;
+	}
+}
 
