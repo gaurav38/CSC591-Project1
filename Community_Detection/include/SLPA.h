@@ -15,9 +15,12 @@ class SLPA{
 public:
 	Graph* theGraph;
 	string inputFileName;
+	int N_ITER;
 
-	SLPA(string fileName);
+	SLPA(string fileName, int numIterations);
 	virtual ~SLPA();
+	void propagateLabels();
+	void outputCommunities();
 
 };
 
