@@ -12,6 +12,7 @@ Graph::Graph(string inFileName){
 	NN=0;
 	inputFileName = inFileName;
 	cout<<"The file name got to Graph and is "<<inputFileName<<endl;
+	readGraph();
 
 }
 
@@ -19,14 +20,20 @@ Graph::~Graph(){
 
 }
 
-void Graph::readGraph(string inFileName){
-	fstream fsin;
-	fsin.open(inFileName.c_str(),fstream::in);
-	if(fsin.is_open()){
-		//read it
-		fsin.close();
+void Graph::readGraph(){
+	ifstream inFile(inputFileName.c_str());
+	string inLine;
+
+	if(inFile.is_open()){
+		getline(inFile,inLine);
+		istringstream iss(inLine);
+		iss>>NN>>NE;
+		cout<<"The number of nodes in the graph is NN = "<<NN <<" and the number of edges is NE = "<<NE<<endl<<endl;
+
+
+		inFile.close();
 	}else{
 		cout<<"File is not open for reading"<<endl;
 	}
-}
+}//end of readGraph()
 

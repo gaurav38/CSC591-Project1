@@ -11,8 +11,12 @@
 #define GRAPH_H_
 
 #include <fstream>
+#include <iostream>
+#include <string>
+#include <sstream>
 #include <vector>
 #include <map>
+#include <cstdlib>
 #include "Node.h"
 
 using namespace std;
@@ -31,7 +35,7 @@ public:
 	Graph(string inputFileName);
 	virtual ~Graph();
 
-	void readGraph(string inputFileName);
+	void readGraph();
 
 
 };
