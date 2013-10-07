@@ -19,6 +19,8 @@ class Graph{
 public:
 	int NN; //total number of nodes in the graph
 	int NE; //total number of edges in the graph
+	vector<Node *> NodeArray;
+	map<int,Node *> AdjacencyMap;
 
 
 	Graph(string inputFileName);
