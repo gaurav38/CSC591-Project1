@@ -8,7 +8,8 @@ int main(int argc, char* argv[])
 
 	SLPA* theSLPA;
 
-	string inFileName=argv[0];
+	string inFileName=argv[1];
+	cout<<"filename got into main and is "<<inFileName<<endl;
 
 	theSLPA = new SLPA(inFileName);
 

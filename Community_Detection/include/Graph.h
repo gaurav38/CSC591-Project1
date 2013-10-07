@@ -25,6 +25,8 @@ public:
 	vector<Node *> NodeArray;
 	map<int,Node *> AdjacencyMap;
 
+	string inputFileName;
+
 
 	Graph(string inputFileName);
 	virtual ~Graph();

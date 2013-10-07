@@ -7,9 +7,11 @@
 
 #include "Graph.h"
 
-Graph::Graph(string inputFileName){
+Graph::Graph(string inFileName){
 	NE=0;
 	NN=0;
+	inputFileName = inFileName;
+	cout<<"The file name got to Graph and is "<<inputFileName<<endl;
 
 }
 
