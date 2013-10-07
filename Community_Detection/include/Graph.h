@@ -11,6 +11,9 @@
 #define GRAPH_H_
 
 #include <fstream>
+#include <vector>
+#include <map>
+#include "Node.h"
 
 using namespace std;
 
