@@ -7,6 +7,14 @@
 
 #include "Graph.h"
 
-Graph::Graph()
+Graph::Graph(string inputFileName){
+	NE=0;
+	NN=0;
+
+}
+
+Graph::~Graph(){
+
+}
 
 
