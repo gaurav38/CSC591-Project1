@@ -1,9 +1,17 @@
 #include "Node.h"
+#include "SLPA.h"
 #include <iostream>
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
+
+	SLPA* theSLPA;
+
+	string inFileName=argv[0];
+
+	theSLPA = new SLPA(inFileName);
+
     Node *node = new Node(1);
     std::cout<<"Label="<<node->Getlabel();
     for(int i=2; i<=10; i++)
