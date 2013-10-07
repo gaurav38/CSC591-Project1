@@ -14,8 +14,8 @@ int main(int argc, char* argv[]){	//usage example: community.exe amazon.graph 10
 
 	cout<<"filename got into main and is "<<inFileName<<endl;
 
-	theSLPA = new SLPA(inFileName, numIter);
-	theSLPA->propagateLabels();
+	theSLPA = new SLPA(inFileName);
+	theSLPA->propagateLabels(numIter);
 	theSLPA->outputCommunities();
 
     Node *node = new Node(1);

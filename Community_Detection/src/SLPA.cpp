@@ -8,12 +8,9 @@
 
 #include "SLPA.h"
 
-SLPA::SLPA(string inFileName, int numIterations){
+SLPA::SLPA(string inFileName){
 	inputFileName = inFileName;
 	theGraph = new Graph(inputFileName);
-	N_ITER = numIterations;
-	cout<<"N_ITER = "<<N_ITER<<endl;
-
 }
 
 SLPA::~SLPA(){
@@ -38,9 +35,10 @@ SLPA::~SLPA(){
  * 3) The post-processing based on the labels in the memories and the threshold THRESH
  * 		is applied to output the communities
  */
-void SLPA::propagateLabels(){
+void SLPA::propagateLabels(int numIter){
 
-	for (int i=0;i<N_ITER;i++){
+
+	for (int i=0;i<numIter;i++){
 
 		// for all nodes
 		//	mark them unvisited
