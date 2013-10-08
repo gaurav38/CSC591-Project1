@@ -36,24 +36,29 @@ SLPA::~SLPA(){
  * 3) The post-processing based on the labels in the memories and the threshold THRESH
  * 		is applied to output the communities
  */
+int myrandom (int i){return std::rand()%i;}
+
 void SLPA::propagateLabels(int numIter){
 
 	//unsigned int randID;
-
+	vector<unsigned> randomNodeIDs;
+	//http://www.cplusplus.com/reference/algorithm/random_shuffle/
+	for (unsigned int j=0;j<10;j++){
+	//for (unsigned int j=0;j<theGraph->NN;j++){
+		randomNodeIDs.push_back(j);
+	}
 
 	for (int i=0;i<numIter;i++){
 
 		// for all nodes
 		//	mark them unvisited
 		srand(unsigned (time(0)));
-		vector<unsigned> randomNodeIDs;
-		//http://www.cplusplus.com/reference/algorithm/random_shuffle/
-		for (unsigned int j=0;i<theGraph->NN;j++){
-			randomNodeIDs.push_back(j);
-		}
-		random_shuffle(randomNodeIDs.begin(),randomNodeIDs.end());
-		for (std::vector<int>::iterator it=randomNodeIDs.begin(); it!=randomNodeIDs.end(); ++it){
-			std::cout << ' ' << *it;
+
+
+		random_shuffle(randomNodeIDs.begin(),randomNodeIDs.end(),myrandom);
+		for (std::vector<unsigned>::iterator it=randomNodeIDs.begin(); it!=randomNodeIDs.end(); ++it){
+			//std::cout << ' ' << *it;
+			cout<<"Iterator through randomNodeIDs is at " <<*it<<endl;
 					//randID=selectRandomNode();//node X <- pickRandomeNode()
 					//X listenToNeighbors()
 					//etc.
