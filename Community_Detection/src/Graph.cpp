@@ -23,7 +23,7 @@ Graph::~Graph(){
 void Graph::readGraph(){
 	ifstream inFile(inputFileName.c_str());
 	string inLine;
-	int fromID, toID;
+	unsigned int fromID, toID;
 
 	if(inFile.is_open()){
 		getline(inFile,inLine);
@@ -44,7 +44,34 @@ void Graph::readGraph(){
 	}
 }//end of readGraph()
 
-void Graph::storeEdge(int from, int to){
+void Graph::storeEdge(unsigned int fromID, unsigned int toID){
+
+	Node *nd;
+	if (IDtoNodeMap.count(fromID)>0){ //node from already in the map
+		nd=IDtoNodeMap[fromID];
+		nd->AddNeighbor(toID);
+	}else{
+		nd = new Node(fromID);
+		NodeArray.push_back(nd);
+		IDtoNodeMap.insert(pair<unsigned int, Node *>(fromID,nd));
+
+	}
+	//for undirected graph if edges are listed only once we have to insert both nodes
+	unsigned int swapt;
+	swapt = fromID;
+	fromID=toID;
+	toID=swapt;
+
+
+	if (IDtoNodeMap.count(fromID)>0){ //node from already in the map
+		nd=IDtoNodeMap[fromID];
+		nd->AddNeighbor(toID);
+	}else{
+		nd = new Node(fromID);
+		NodeArray.push_back(nd);
+		IDtoNodeMap.insert(pair<unsigned int, Node *>(fromID,nd));
+	}
+
 
 }
 

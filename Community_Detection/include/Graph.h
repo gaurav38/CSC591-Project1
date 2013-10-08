@@ -27,7 +27,7 @@ public:
 	int NN; //total number of nodes in the graph
 	int NE; //total number of edges in the graph
 	vector<Node *> NodeArray;
-	map<int,Node *> IDtoNodeMap;
+	map<unsigned int,Node *> IDtoNodeMap;
 
 	string inputFileName;
 
@@ -37,7 +37,7 @@ public:
 
 	void readGraph();
 private:
-	void storeEdge(int from, int to);
+	void storeEdge(unsigned int from, unsigned int to);
 
 
 };
