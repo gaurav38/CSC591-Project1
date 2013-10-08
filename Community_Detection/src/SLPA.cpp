@@ -11,6 +11,7 @@
 SLPA::SLPA(string inFileName){
 	inputFileName = inFileName;
 	theGraph = new Graph(inputFileName);
+
 }
 
 SLPA::~SLPA(){
@@ -37,12 +38,18 @@ SLPA::~SLPA(){
  */
 void SLPA::propagateLabels(int numIter){
 
+	unsigned int randID;
+
 
 	for (int i=0;i<numIter;i++){
 
 		// for all nodes
 		//	mark them unvisited
-		//node X <- pickRandomeNode()
+		//for (int j=0;i<theGraph->NN;i++){
+		//	unsigned nodeID =j;
+		//	unvisitedIDs.insert(nodeID,nodeID);
+		//}
+		//randID=selectRandomNode();//node X <- pickRandomeNode()
 		//X listenToNeighbors()
 		//etc.
 		cout<<"Propagating labels iteration number = " <<i<<endl;
@@ -53,6 +60,13 @@ void SLPA::propagateLabels(int numIter){
 
 void SLPA::outputCommunities(){
 	//write communities to a file
+}
+
+unsigned int SLPA::selectRandomNode(){
+
+	//generate random
+	unsigned int random = 5; //for now
+	return random;
 }
 
 

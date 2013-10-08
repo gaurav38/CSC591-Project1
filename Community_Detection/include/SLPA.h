@@ -21,6 +21,9 @@ public:
 	virtual ~SLPA();
 	void propagateLabels(int numIterations);
 	void outputCommunities();
+private:
+	map<unsigned int, unsigned int> unvisitedIDs;
+	unsigned int selectRandomNode();
 
 };
 
