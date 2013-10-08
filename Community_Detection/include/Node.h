@@ -20,18 +20,14 @@ class Node
         /** Default constructor */
         Node();
         /** Parameterized Constructor */
-        Node(Label node_ID)
-        {
-            nodeID = node_ID;
-            mymap[nodeID] = 1;
-            community_count++;
-            maxlabel.insert(1);
-        }
+        Node(Label node_ID);
+
         /** Default destructor */
         virtual ~Node();
         Label Getlabel();
         Neighbors Getneighbors();
         void AddNeighbor(Label);
+        Label speak();
 
         /** Access count;
          * \return The current value of count;
