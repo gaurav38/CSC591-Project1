@@ -20,10 +20,10 @@ class Node
         /** Default constructor */
         Node();
         /** Parameterized Constructor */
-        Node(Label node_label)
+        Node(Label node_ID)
         {
-            label = node_label;
-            mymap[label] = 1;
+            nodeID = node_ID;
+            mymap[nodeID] = 1;
             community_count++;
             maxlabel.insert(1);
         }
@@ -44,11 +44,12 @@ class Node
         void AddListenedLabel(Label);
         bool isLabelListened(Label);
         unsigned int getNodeID();
+        void listen();
 
     protected:
     private:
         unsigned int nodeID;
-        Label label; //!< Member variable "label"
+        //Label label; //!< Member variable "label"
         Neighbors neighbors; //!< Member variable "neighbors"
         Community_Map mymap; //!< Member variable "mymap"
         Listener_Map mylistener;  //!< Member variable "mylistener"

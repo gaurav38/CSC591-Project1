@@ -56,8 +56,8 @@ void SLPA::propagateLabels(int numIter){
 		for (std::vector<unsigned>::iterator it=randomNodeIDs.begin(); it!=randomNodeIDs.end(); ++it){
 			Node *listener;
 			listener = theGraph->IDtoNodeMap[*it];
-			cout<<"the listeners label is "<<listener->getNodeID()<<endl;
-			//TODO: listener should get its label list updated here
+			//cout<<"the listeners label is "<<listener->getNodeID()<<endl;
+			listener->listen();
 		}
 		//cout<<"Propagating labels iteration number = " <<i<<endl;
 	}

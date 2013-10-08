@@ -17,7 +17,7 @@ Node::~Node()
  */
 Label Node::Getlabel()
 {
-    return label;
+    return nodeID;
 }
 
 /** Access neighbors
@@ -93,4 +93,8 @@ bool Node::isLabelListened(Label x)
 
 unsigned int Node::getNodeID(){
 	return nodeID;
+}
+
+void Node::listen(){
+	cout<<"I am node " << nodeID << " and I am listening"<<endl;
 }
