@@ -43,9 +43,11 @@ class Node
         unsigned int GetCommunityCount(Label);
         void AddListenedLabel(Label);
         bool isLabelListened(Label);
+        unsigned int getNodeID();
 
     protected:
     private:
+        unsigned int nodeID;
         Label label; //!< Member variable "label"
         Neighbors neighbors; //!< Member variable "neighbors"
         Community_Map mymap; //!< Member variable "mymap"

@@ -91,3 +91,6 @@ bool Node::isLabelListened(Label x)
         return true;
 }
 
+unsigned int Node::getNodeID(){
+	return nodeID;
+}

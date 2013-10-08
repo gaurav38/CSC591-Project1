@@ -43,7 +43,9 @@ void SLPA::propagateLabels(int numIter){
 	//unsigned int randID;
 	vector<unsigned> randomNodeIDs;
 	//http://www.cplusplus.com/reference/algorithm/random_shuffle/
-	for (unsigned int j=0;j<10;j++){
+	unsigned int numNodes = theGraph->NN;
+	cout<<"number of nodes numNodes = "<<numNodes<<endl;
+	for (unsigned int j=0;j<numNodes;j++){
 	//for (unsigned int j=0;j<theGraph->NN;j++){
 		randomNodeIDs.push_back(j);
 	}
@@ -57,11 +59,16 @@ void SLPA::propagateLabels(int numIter){
 
 		random_shuffle(randomNodeIDs.begin(),randomNodeIDs.end(),myrandom);
 		for (std::vector<unsigned>::iterator it=randomNodeIDs.begin(); it!=randomNodeIDs.end(); ++it){
-			//std::cout << ' ' << *it;
-			cout<<"Iterator through randomNodeIDs is at " <<*it<<endl;
-					//randID=selectRandomNode();//node X <- pickRandomeNode()
-					//X listenToNeighbors()
-					//etc.
+			Node *listener;
+			listener = theGraph->IDtoNodeMap[*it];
+			cout<<"the listeners label is "<<listener->getNodeID()<<endl;
+			vector<unsigned int> speakerIDs=listener
+
+			//cout<<"Iterator through randomNodeIDs is at " <<*it<<endl;
+
+			//randID=selectRandomNode();//node X <- pickRandomeNode()
+			//X listenToNeighbors()
+			//etc.
 		}
 
 
@@ -76,11 +83,5 @@ void SLPA::outputCommunities(){
 	//write communities to a file
 }
 
-//unsigned int SLPA::selectRandomNode(){
-
-	//generate random
-	//unsigned int random = 5; //for now
-	//return random;
-//}
 
 
