@@ -51,32 +51,16 @@ void SLPA::propagateLabels(int numIter){
 	}
 
 	for (int i=0;i<numIter;i++){
-
-		// for all nodes
-		//	mark them unvisited
-		srand(unsigned (time(0)));
-
-
+		//this reshuffling of node IDs in effect does marking all nodes unvisited
 		random_shuffle(randomNodeIDs.begin(),randomNodeIDs.end(),myrandom);
 		for (std::vector<unsigned>::iterator it=randomNodeIDs.begin(); it!=randomNodeIDs.end(); ++it){
 			Node *listener;
 			listener = theGraph->IDtoNodeMap[*it];
 			cout<<"the listeners label is "<<listener->getNodeID()<<endl;
-			vector<unsigned int> speakerIDs=listener
-
-			//cout<<"Iterator through randomNodeIDs is at " <<*it<<endl;
-
-			//randID=selectRandomNode();//node X <- pickRandomeNode()
-			//X listenToNeighbors()
-			//etc.
+			//TODO: listener should get its label list updated here
 		}
-
-
-
-		cout<<"Propagating labels iteration number = " <<i<<endl;
+		//cout<<"Propagating labels iteration number = " <<i<<endl;
 	}
-
-
 }
 
 void SLPA::outputCommunities(){
