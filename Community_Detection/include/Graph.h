@@ -24,8 +24,8 @@ using namespace std;
 class Graph{
 
 public:
-	int NN; //total number of nodes in the graph
-	int NE; //total number of edges in the graph
+	unsigned int NN; //total number of nodes in the graph
+	unsigned int NE; //total number of edges in the graph
 	vector<Node *> NodeArray;
 	map<unsigned int,Node *> IDtoNodeMap;
 

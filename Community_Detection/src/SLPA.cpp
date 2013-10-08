@@ -38,20 +38,29 @@ SLPA::~SLPA(){
  */
 void SLPA::propagateLabels(int numIter){
 
-	unsigned int randID;
+	//unsigned int randID;
 
 
 	for (int i=0;i<numIter;i++){
 
 		// for all nodes
 		//	mark them unvisited
-		//for (int j=0;i<theGraph->NN;i++){
-		//	unsigned nodeID =j;
-		//	unvisitedIDs.insert(nodeID,nodeID);
-		//}
-		//randID=selectRandomNode();//node X <- pickRandomeNode()
-		//X listenToNeighbors()
-		//etc.
+		srand(unsigned (time(0)));
+		vector<unsigned> randomNodeIDs;
+		//http://www.cplusplus.com/reference/algorithm/random_shuffle/
+		for (unsigned int j=0;i<theGraph->NN;j++){
+			randomNodeIDs.push_back(j);
+		}
+		random_shuffle(randomNodeIDs.begin(),randomNodeIDs.end());
+		for (std::vector<int>::iterator it=randomNodeIDs.begin(); it!=randomNodeIDs.end(); ++it){
+			std::cout << ' ' << *it;
+					//randID=selectRandomNode();//node X <- pickRandomeNode()
+					//X listenToNeighbors()
+					//etc.
+		}
+
+
+
 		cout<<"Propagating labels iteration number = " <<i<<endl;
 	}
 
@@ -62,11 +71,11 @@ void SLPA::outputCommunities(){
 	//write communities to a file
 }
 
-unsigned int SLPA::selectRandomNode(){
+//unsigned int SLPA::selectRandomNode(){
 
 	//generate random
-	unsigned int random = 5; //for now
-	return random;
-}
+	//unsigned int random = 5; //for now
+	//return random;
+//}
 
 

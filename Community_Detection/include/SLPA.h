@@ -9,6 +9,9 @@
 #define SLPA_H_
 
 #include "Graph.h"
+#include <tr1/unordered_map>
+#include <tr1/random>
+#include <algorithm>
 
 class SLPA{
 
@@ -17,12 +20,13 @@ public:
 	string inputFileName;
 
 
+
 	SLPA(string fileName);
 	virtual ~SLPA();
 	void propagateLabels(int numIterations);
 	void outputCommunities();
 private:
-	map<unsigned int, unsigned int> unvisitedIDs;
+
 	unsigned int selectRandomNode();
 
 };
