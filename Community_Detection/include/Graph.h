@@ -27,7 +27,7 @@ public:
 	int NN; //total number of nodes in the graph
 	int NE; //total number of edges in the graph
 	vector<Node *> NodeArray;
-	map<int,Node *> AdjacencyMap;
+	map<int,Node *> IDtoNodeMap;
 
 	string inputFileName;
 
@@ -36,6 +36,8 @@ public:
 	virtual ~Graph();
 
 	void readGraph();
+private:
+	void storeEdge(int from, int to);
 
 
 };

@@ -29,7 +29,7 @@ SLPA::~SLPA(){
  * 		a. One unvisited node is randomly selected as a listener.
  * 		b. Each neighbor (speaker) of the selected node randomly selects label
  * 			with probability proportional to the occurance frequency in the memory
- * 			and sens the selected label to the listener
+ * 			and sends the selected label to the listener
  * 		c. The listener adds the most popular label received to its memory.
  * 		d. Mark the listener visited
  * 3) The post-processing based on the labels in the memories and the threshold THRESH
