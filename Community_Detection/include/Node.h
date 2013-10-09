@@ -22,6 +22,7 @@ class Node
         /** Default constructor */
         Node();
         /** Parameterized Constructor */
+<<<<<<< HEAD
         Node(NodeID id)
         {
             nodeID = id;
@@ -35,6 +36,16 @@ class Node
         NodeID GetNodeID();
         Neighbors GetNeighbors();
         void AddNeighbor(NodeID);
+=======
+        Node(Label node_ID);
+
+        /** Default destructor */
+        virtual ~Node();
+        Label Getlabel();
+        Neighbors Getneighbors();
+        void AddNeighbor(Label);
+        Label speak();
+>>>>>>> 141c8fba26537142bfe190b56610e7f87fb20ab8
 
         /** Access count;
          * \return The current value of count;
@@ -46,6 +57,7 @@ class Node
         unsigned int GetCommunityCount(Label);
         void AddListenedLabel(Label);
         bool isLabelListened(Label);
+<<<<<<< HEAD
 
         /** Listener;
          *  Adds a label to mymap depending on the labels
@@ -66,6 +78,15 @@ class Node
     protected:
     private:
         NodeID nodeID; //!<member variable "nodeID"
+=======
+        unsigned int getNodeID();
+        void listen();
+
+    protected:
+    private:
+        unsigned int nodeID;
+        //Label label; //!< Member variable "label"
+>>>>>>> 141c8fba26537142bfe190b56610e7f87fb20ab8
         Neighbors neighbors; //!< Member variable "neighbors"
         Community_Map mymap; //!< Member variable "mymap"
         Listener_Map mylistener;  //!< Member variable "mylistener"

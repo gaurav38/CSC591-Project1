@@ -8,6 +8,14 @@ Node::Node()
     //ctor
 }
 
+Node::Node(Label node_ID)
+{
+    nodeID = node_ID;
+    mymap[nodeID] = 1;
+    community_count++;
+    maxlabel.insert(1);
+}
+
 Node::~Node()
 {
     //dtor
@@ -138,4 +146,14 @@ void Node::listen()
         mymap[popular_label] = 1;
     community_count++;
     listen_count = 0;
+}
+
+void Node::listen(){
+	cout<<"I am node " << nodeID << " and I am listening"<<endl;
+}
+
+Label Node::speak(){
+	Label mostLabel;
+
+	return mostLabel;
 }
