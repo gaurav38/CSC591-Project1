@@ -23,6 +23,7 @@ class Node
         Node();
         /** Parameterized Constructor */
 <<<<<<< HEAD
+<<<<<<< HEAD
         Node(NodeID id)
         {
             nodeID = id;
@@ -31,6 +32,10 @@ class Node
             listen_count = 0;
             //maxlabel.insert(1);
         }
+=======
+        Node(Label node_ID);
+
+>>>>>>> 141c8fba26537142bfe190b56610e7f87fb20ab8
         /** Default destructor */
         virtual ~Node();
         NodeID GetNodeID();
@@ -45,6 +50,9 @@ class Node
         Neighbors Getneighbors();
         void AddNeighbor(Label);
         Label speak();
+<<<<<<< HEAD
+>>>>>>> 141c8fba26537142bfe190b56610e7f87fb20ab8
+=======
 >>>>>>> 141c8fba26537142bfe190b56610e7f87fb20ab8
 
         /** Access count;
@@ -86,6 +94,9 @@ class Node
     private:
         unsigned int nodeID;
         //Label label; //!< Member variable "label"
+<<<<<<< HEAD
+>>>>>>> 141c8fba26537142bfe190b56610e7f87fb20ab8
+=======
 >>>>>>> 141c8fba26537142bfe190b56610e7f87fb20ab8
         Neighbors neighbors; //!< Member variable "neighbors"
         Community_Map mymap; //!< Member variable "mymap"

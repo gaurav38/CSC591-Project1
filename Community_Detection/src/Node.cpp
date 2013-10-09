@@ -157,3 +157,13 @@ Label Node::speak(){
 
 	return mostLabel;
 }
+
+void Node::listen(){
+	cout<<"I am node " << nodeID << " and I am listening"<<endl;
+}
+
+Label Node::speak(){
+	Label mostLabel;
+
+	return mostLabel;
+}
