@@ -1,4 +1,5 @@
 #include "Node.h"
+#include "Graph.h"
 #include <map>
 #include <vector>
 
@@ -15,15 +16,15 @@ Node::~Node()
 /** Access label
  * \return The current value of label
  */
-Label Node::Getlabel()
+Label Node::GetNodeID()
 {
-    return label;
+    return nodeID;
 }
 
 /** Access neighbors
  * \return The current value of neighbors
  */
-Neighbors Node::Getneighbors()
+Neighbors Node::GetNeighbors()
 {
     return neighbors;
 }
@@ -31,7 +32,7 @@ Neighbors Node::Getneighbors()
 /** Set neighbors
  * \param val New value to set
  */
-void Node::AddNeighbor(Label x)
+void Node::AddNeighbor(NodeID x)
 {
     neighbors.push_back(x);
 }
@@ -91,6 +92,50 @@ bool Node::isLabelListened(Label x)
         return true;
 }
 
-unsigned int Node::getNodeID(){
-	return nodeID;
+Label Node::getPopularLabel()
+{
+    Label max_label = 0;
+    unsigned int max_popular_probability = 0;
+    for(Listener_Map::iterator it = mylistener.begin(); it != mylistener.end(); ++it)
+    {
+        Label current_label = it->first;
+        unsigned int current_label_count = it->second;
+        unsigned int current_probability = current_label_count/listen_count;
+        if(current_probability > max_popular_probability)
+        {
+            max_label = current_label;
+            max_popular_probability = current_probability;
+        }
+    }
+    return max_label;
+}
+
+void Node::listen()
+{
+    int total_neighbors = neighbors.size();
+    int i = 0;
+    Node *node[total_neighbors]; //initialize an array to store pointer to neighbors
+    for(Neighbors::iterator it = neighbors.begin(); it != neighbors.end(); ++it)
+    {
+        node[i] = Graph::getNode(*it);
+        Label listened_label = node[i]->speak();
+        if(isLabelListened(listened_label))
+            mylistener[listened_label]++;
+        else
+            mylistener[listened_label] = 1;
+        listen_count++;
+        i++;
+    }
+
+    // End of listening phase
+    // Get the most popular listened label
+    Label popular_label = getPopularLabel();
+
+    // Add the popular_label to mymap
+    if(isCommunityPresent(popular_label))
+        mymap[popular_label]++;
+    else
+        mymap[popular_label] = 1;
+    community_count++;
+    listen_count = 0;
 }

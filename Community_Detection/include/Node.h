@@ -1,6 +1,7 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include "Graph.h"
 #include <iostream>
 #include <vector>
 #include <map>
@@ -9,9 +10,10 @@
 using namespace std;
 
 typedef unsigned int Label;
+typedef unsigned int NodeID;
 typedef std::map<Label, unsigned int> Community_Map;
 typedef std::map<Label, unsigned int> Listener_Map;
-typedef vector<Label> Neighbors;
+typedef vector<NodeID> Neighbors;
 typedef std::set<Label> MaxLabel;
 
 class Node
@@ -20,18 +22,19 @@ class Node
         /** Default constructor */
         Node();
         /** Parameterized Constructor */
-        Node(Label node_label)
+        Node(NodeID id)
         {
-            label = node_label;
-            mymap[label] = 1;
-            community_count++;
-            maxlabel.insert(1);
+            nodeID = id;
+            mymap[nodeID] = 1;
+            community_count = 1;
+            listen_count = 0;
+            //maxlabel.insert(1);
         }
         /** Default destructor */
         virtual ~Node();
-        Label Getlabel();
-        Neighbors Getneighbors();
-        void AddNeighbor(Label);
+        NodeID GetNodeID();
+        Neighbors GetNeighbors();
+        void AddNeighbor(NodeID);
 
         /** Access count;
          * \return The current value of count;
@@ -43,12 +46,26 @@ class Node
         unsigned int GetCommunityCount(Label);
         void AddListenedLabel(Label);
         bool isLabelListened(Label);
-        unsigned int getNodeID();
+
+        /** Listener;
+         *  Adds a label to mymap depending on the labels
+         *  listened from the neighbors
+         */
+        void listen();
+
+        /** getPopularLabel
+         * \return the most popular label in the listener map
+         */
+        Label getPopularLabel();
+
+        /** Speaker;
+         * \return a random lable with probability proportional to its occurence
+         */
+        Label speak();
 
     protected:
     private:
-        unsigned int nodeID;
-        Label label; //!< Member variable "label"
+        NodeID nodeID; //!<member variable "nodeID"
         Neighbors neighbors; //!< Member variable "neighbors"
         Community_Map mymap; //!< Member variable "mymap"
         Listener_Map mylistener;  //!< Member variable "mylistener"
