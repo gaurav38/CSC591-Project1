@@ -20,22 +20,20 @@
 #include "Node.h"
 
 using namespace std;
+typedef std::map<NodeID,Node *> NodeMap;
 
 class Graph{
 
 public:
 	unsigned int NN; //total number of nodes in the graph
 	unsigned int NE; //total number of edges in the graph
-	vector<Node *> NodeArray;
-	map<unsigned int,Node *> IDtoNodeMap;
-
+	static NodeMap IDtoNodeMap;
+    static Node * getNode(Label);
 	string inputFileName;
-
-
 	Graph(string inputFileName);
 	virtual ~Graph();
-
 	void readGraph();
+
 private:
 	void storeEdge(unsigned int from, unsigned int to);
 

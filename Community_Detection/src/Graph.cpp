@@ -52,6 +52,7 @@ void Graph::storeEdge(unsigned int fromID, unsigned int toID){
 		nd->AddNeighbor(toID);
 	}else{
 		nd = new Node(fromID);
+		nd->AddNeighbor(toID);
 		NodeArray.push_back(nd);
 		IDtoNodeMap.insert(pair<unsigned int, Node *>(fromID,nd));
 
@@ -73,5 +74,10 @@ void Graph::storeEdge(unsigned int fromID, unsigned int toID){
 	}
 
 
+}
+
+static Node * Graph::getNode(NodeID x)
+{
+    return IDtoNodeMap[x];
 }
 
