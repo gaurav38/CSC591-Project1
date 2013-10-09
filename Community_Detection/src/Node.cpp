@@ -8,12 +8,21 @@ Node::Node()
     //ctor
 }
 
-Node::Node(Label node_ID)
+//Node::Node(Label node_ID)
+//{
+//    nodeID = node_ID;
+//    mymap[nodeID] = 1;
+//    community_count++;
+//    maxlabel.insert(1);
+//}
+
+Node::Node(NodeID id)
 {
-    nodeID = node_ID;
+    nodeID = id;
     mymap[nodeID] = 1;
-    community_count++;
-    maxlabel.insert(1);
+    community_count = 1;
+    listen_count = 0;
+    //maxlabel.insert(1);
 }
 
 Node::~Node()
@@ -148,22 +157,22 @@ void Node::listen()
     listen_count = 0;
 }
 
-void Node::listen(){
-	cout<<"I am node " << nodeID << " and I am listening"<<endl;
-}
+//void Node::listen(){
+//	cout<<"I am node " << nodeID << " and I am listening"<<endl;
+//}
 
 Label Node::speak(){
-	Label mostLabel;
+	Label mostLabel = nodeID; //for now
 
 	return mostLabel;
 }
 
-void Node::listen(){
-	cout<<"I am node " << nodeID << " and I am listening"<<endl;
-}
+//void Node::listen(){
+//	cout<<"I am node " << nodeID << " and I am listening"<<endl;
+//}
 
-Label Node::speak(){
-	Label mostLabel;
+//Label Node::speak(){
+//	Label mostLabel;
 
-	return mostLabel;
-}
+//	return mostLabel;
+//}

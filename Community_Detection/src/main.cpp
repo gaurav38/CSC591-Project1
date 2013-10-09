@@ -19,13 +19,13 @@ int main(int argc, char* argv[]){	//usage example: community.exe amazon.graph 10
 	theSLPA->outputCommunities();
 
     Node *node = new Node(1);
-    std::cout<<"Label="<<node->Getlabel();
+    //std::cout<<"Label="<<node->Getlabel();
     for(int i=2; i<=10; i++)
         node->AddNeighbor(i);
-    Neighbors neighbors = node->Getneighbors();
+   // Neighbors neighbors = node->Getneighbors();
     Neighbors::iterator it;
-    for(it=neighbors.begin(); it<neighbors.end(); it++)
-        std::cout<<"\nNeighbors="<<*it;
+    //for(it=neighbors.begin(); it<neighbors.end(); it++)
+      //  std::cout<<"\nNeighbors="<<*it;
 
     node->AddCommunity(3);
     node->AddCommunity(3);

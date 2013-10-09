@@ -28,7 +28,7 @@ public:
 	unsigned int NN; //total number of nodes in the graph
 	unsigned int NE; //total number of edges in the graph
 	static NodeMap IDtoNodeMap;
-    static Node * getNode(Label);
+    static Node * getNode(NodeID);
 	string inputFileName;
 	Graph(string inputFileName);
 	virtual ~Graph();
