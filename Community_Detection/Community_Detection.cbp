@@ -13,6 +13,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
+					<Add directory="C:/Users/gaurav/Documents/GitHub/CSC591-Project1/Community_Detection/include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -31,6 +33,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/Node.h" />
+		<Unit filename="src/Node.cpp" />
+		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
