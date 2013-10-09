@@ -44,6 +44,8 @@ void Graph::readGraph(){
 	}
 }//end of readGraph()
 
+NodeMap Graph::IDtoNodeMap;
+
 void Graph::storeEdge(unsigned int fromID, unsigned int toID){
 
 	Node *nd;
