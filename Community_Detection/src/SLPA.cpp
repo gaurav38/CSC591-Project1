@@ -63,8 +63,18 @@ void SLPA::propagateLabels(int numIter){
 	}
 }
 
-void SLPA::outputCommunities(){
-	//write communities to a file
+void SLPA::outputCommunities(double thresh)
+{
+    for (unsigned int i = 0; i < theGraph->NN; i++){
+        Node* nd = Graph::getNode(i);
+        cout<<"Node ID for extracting community labels is " << nd->GetNodeID()<<endl;
+        Community_Map coMap = nd->getMyMap();
+        Community_Map::iterator mapIt;
+        for (std::map<Label,unsigned int>::iterator mapIt=coMap.begin(); mapIt!=coMap.end(); ++mapIt){
+            cout<<" "<< mapIt->first;
+        }
+        cout<<endl;
+    }
 }
 
 

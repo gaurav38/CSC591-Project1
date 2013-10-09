@@ -163,6 +163,7 @@ void Node::listen()
 //}
 
 Label Node::speak(){
+    cout<<"Node "<<nodeID<<" is speaking"<<endl;
 	Label mostLabel=nodeID;//returns most probable label
 	double randy = doubleRand();
 	double intervalEdge = 0;
@@ -171,6 +172,7 @@ Label Node::speak(){
 		Label currentLabel = mapIt->first;
 		unsigned int currentLabelCount = mapIt->second;  //points to value
 		intervalEdge = intervalEdge + ((double)currentLabelCount)/community_count;
+		cout<<"------------------intervalEdge = "<< intervalEdge<<endl;
 		if(randy<=intervalEdge){
 			cout<<"mostLabel returned by speak is "<<currentLabel;
 			return currentLabel;
@@ -187,12 +189,9 @@ double Node::doubleRand(){
 	return f;
 }
 
-//void Node::listen(){
-//	cout<<"I am node " << nodeID << " and I am listening"<<endl;
-//}
+Community_Map Node::getMyMap()
+{
+    return mymap;
+}
 
-//Label Node::speak(){
-//	Label mostLabel;
 
-//	return mostLabel;
-//}

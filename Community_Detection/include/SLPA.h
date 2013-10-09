@@ -9,6 +9,7 @@
 #define SLPA_H_
 
 #include "Graph.h"
+#include "Node.h"
 #include <tr1/unordered_map>
 #include <tr1/random>
 #include <algorithm>
@@ -24,7 +25,7 @@ public:
 	SLPA(string fileName);
 	virtual ~SLPA();
 	void propagateLabels(int numIterations);
-	void outputCommunities();
+	void outputCommunities(double);
 private:
 
 	unsigned int selectRandomNode();

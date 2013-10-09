@@ -23,28 +23,21 @@ public:
         /** Default constructor */
         Node();
         /** Parameterized Constructor */
-
-
-
         Node(NodeID);
-
-
         /** Default destructor */
         virtual ~Node();
         NodeID GetNodeID();
         Neighbors GetNeighbors();
         void AddNeighbor(NodeID);
-
-        //Node(Label node_ID);
-
         /** Default destructor */
         //virtual ~Node();
         Label Getlabel();
         Neighbors Getneighbors();
-        //void AddNeighbor(Label);
+        Community_Map getMyMap();
+        /** Speaker;
+         * \return a random lable with probability proportional to its occurence
+         */
         Label speak();
-
-
         /** Access count;
          * \return The current value of count;
          */
@@ -56,23 +49,15 @@ public:
         void AddListenedLabel(Label);
         bool isLabelListened(Label);
         double doubleRand();
-
-
         /** Listener;
          *  Adds a label to mymap depending on the labels
          *  listened from the neighbors
          */
         void listen();
-
         /** getPopularLabel
          * \return the most popular label in the listener map
          */
         Label getPopularLabel();
-
-        /** Speaker;
-         * \return a random lable with probability proportional to its occurence
-         */
-        //Label speak();
 
     protected:
     private:
