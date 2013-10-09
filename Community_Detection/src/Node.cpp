@@ -111,10 +111,10 @@ bool Node::isLabelListened(Label x)
 
 Label Node::getPopularLabel()
 {
-    cout<<"My total count is "<<listen_count<<endl;
+    //cout<<"My total count is "<<listen_count<<endl;
     Label max_label = mylistener.begin()->first;
     float max_popular_probability = (float)mylistener.begin()->second/listen_count;
-    cout<<"Following labels listened\n";
+    //cout<<"Following labels listened\n";
     for(Listener_Map::iterator it = mylistener.begin(); it != mylistener.end(); ++it)
     {
         Label current_label = it->first;

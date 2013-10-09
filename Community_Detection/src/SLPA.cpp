@@ -51,13 +51,13 @@ void SLPA::propagateLabels(int numIter){
 	}
 
 	for (int i=0;i<numIter;i++){
-        cout<<"------------------------------------------Iteration "<<i<<" ------------------------------------------\n";
+        //cout<<"------------------------------------------Iteration "<<i<<" ------------------------------------------\n";
 		//this reshuffling of node IDs in effect does marking all nodes unvisited
 		random_shuffle(randomNodeIDs.begin(),randomNodeIDs.end(),myrandom);
 		for (std::vector<unsigned>::iterator it=randomNodeIDs.begin(); it!=randomNodeIDs.end(); ++it){
 			Node *listener;
 			listener = theGraph->IDtoNodeMap[*it];
-			cout<<"----------- Current Listeners label is "<<listener->GetNodeID()<<"-----------"<<endl;
+			//cout<<"----------- Current Listeners label is "<<listener->GetNodeID()<<"-----------"<<endl;
 			listener->listen();
 		}
 		//cout<<"Propagating labels iteration number = " <<i<<endl;
