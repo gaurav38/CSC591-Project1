@@ -7,15 +7,16 @@ int main(int argc, char* argv[]){	//usage example: community.exe amazon.graph 10
 
 	SLPA* theSLPA;
 
-    if(argc < 4)
+    if(argc < 5)
     {
-        cout<<"Usage: Community_Detection.exe <input graph> <iterations> <output file\n";
+        cout<<"Usage: Community_Detection.exe <input graph> <iterations> <output file> <threshold>\n";
         exit(0);
     }
 
 	string inFileName = argv[1];
 	int numIter = atoi(argv[2]);
 	string outFileName = argv[3];
+	double threshold = atof(argv[4]);
 	cout<<"argv[2] ="<<argv[2]<<" numIter ="<<numIter<<endl;
 
 
@@ -24,5 +25,5 @@ int main(int argc, char* argv[]){	//usage example: community.exe amazon.graph 10
 
 	theSLPA = new SLPA(inFileName, outFileName);
 	theSLPA->propagateLabels(numIter);
-	theSLPA->outputCommunities(0.1);
+	theSLPA->outputCommunities(threshold);
 }

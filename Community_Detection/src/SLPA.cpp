@@ -69,6 +69,7 @@ void SLPA::writeCommunities()
     ofstream outFile;
     outFile.open(outputFileName.c_str(), ios::out);
     cout<<"\n\nPrinting final communities to the output file\n";
+    /*
     cout<<"These values will be printed\n\n";
     cout<<"-----------------------------------------------------\n";
     cout<<"Community\t\t\tMember Nodes\n";
@@ -76,6 +77,7 @@ void SLPA::writeCommunities()
     outFile<<"-----------------------------------------------------\n";
     outFile<<"Community\t\t\tMember Nodes\n";
     outFile<<"-----------------------------------------------------\n";
+    */
     Community::iterator it;
     for(it = final_communities.begin(); it != final_communities.end(); ++it)
     {
@@ -96,12 +98,13 @@ void SLPA::writeCommunities()
             node_list.append(", ");
         }
         string final_string = com.append(node_list);
-        cout<<final_string<<endl;
+        //cout<<final_string<<endl;
         //char *line = final_string.c_str();
         outFile<<final_string.c_str()<<'\n';
     }
     outFile.close();
-    cout<<"-----------------------------------------------------\n";
+    cout<<"Output file is ready\n";
+    //cout<<"-----------------------------------------------------\n";
 }
 
 void SLPA::outputCommunities(double thresh)
