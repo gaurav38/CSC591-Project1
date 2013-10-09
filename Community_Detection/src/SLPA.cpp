@@ -87,7 +87,7 @@ void SLPA::writeCommunities()
         string com = ss.str();
         std::vector<NodeID> nodes = it->second;
         std::vector<NodeID>::iterator vit;
-        string node_list = string("\t\t\t\t");
+        string node_list;
         for(vit = nodes.begin(); vit != nodes.end(); ++vit)
         {
             int node = *vit;
@@ -95,12 +95,12 @@ void SLPA::writeCommunities()
             ss1 << node;
             string temp_node = ss1.str();
             node_list.append(temp_node);
-            node_list.append(", ");
+            node_list.append(" ");
         }
-        string final_string = com.append(node_list);
+        //string final_string = com.append(node_list);
         //cout<<final_string<<endl;
         //char *line = final_string.c_str();
-        outFile<<final_string.c_str()<<'\n';
+        outFile<<node_list.c_str()<<'\n';
     }
     outFile.close();
     cout<<"Output file is ready\n";
