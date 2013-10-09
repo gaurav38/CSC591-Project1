@@ -155,6 +155,7 @@ void Node::listen()
         mymap[popular_label] = 1;
     community_count++;
     listen_count = 0;
+    mylistener.clear();
 }
 
 //void Node::listen(){
@@ -171,8 +172,8 @@ Label Node::speak(){
 		unsigned int currentLabelCount = mapIt->second;  //points to value
 		intervalEdge = intervalEdge + ((double)currentLabelCount)/community_count;
 		if(randy<=intervalEdge){
-			return currentLabel;
 			cout<<"mostLabel returned by speak is "<<currentLabel;
+			return currentLabel;
 		}
 
 	}
