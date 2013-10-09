@@ -112,19 +112,19 @@ void SLPA::outputCommunities(double thresh)
     for (unsigned int i = 0; i < theGraph->NN; i++){
         Node* nd = Graph::getNode(i);
         NodeID id = nd->GetNodeID();
-        cout<<"Node ID for extracting community labels is " <<id<<endl;
+        //cout<<"Node ID for extracting community labels is " <<id<<endl;
         Community_Map coMap = nd->getMyMap();
         unsigned int total_count = nd->getTotalCommunityCount();
         Community_Map::iterator mapIt;
-        cout<<"Printing the communities of every node before post-processing\n";
+        //cout<<"Printing the communities of every node before post-processing\n";
         for (mapIt=coMap.begin(); mapIt!=coMap.end(); ++mapIt){
             cout<<mapIt->first<<":"<<mapIt->second<<endl;
             if((double)mapIt->second/total_count >= thresh) {
-                cout<<id<<" is part of "<<mapIt->first<<" community\n";
+                //cout<<id<<" is part of "<<mapIt->first<<" community\n";
                 final_communities[mapIt->first].push_back(id);
             }
         }
-        cout<<endl;
+        //cout<<endl;
     }
     writeCommunities();
 }

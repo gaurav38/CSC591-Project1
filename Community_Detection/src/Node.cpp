@@ -119,7 +119,7 @@ Label Node::getPopularLabel()
     {
         Label current_label = it->first;
         unsigned int current_label_count = it->second;
-        cout<<current_label<<'\t'<<current_label_count<<endl;
+        //cout<<current_label<<'\t'<<current_label_count<<endl;
         float current_probability = (float)current_label_count/listen_count;
         if(current_probability > max_popular_probability)
         {

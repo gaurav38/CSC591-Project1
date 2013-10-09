@@ -18,8 +18,6 @@ int main(int argc, char* argv[]){	//usage example: community.exe amazon.graph 10
 	string outFileName = argv[3];
 	double threshold = atof(argv[4]);
 	cout<<"argv[2] ="<<argv[2]<<" numIter ="<<numIter<<endl;
-
-
 	cout<<"filename got into main and is "<<inFileName<<endl;
 	cout<<"final file to be generated is "<<outFileName<<endl;
 
