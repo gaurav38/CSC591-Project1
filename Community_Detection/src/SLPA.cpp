@@ -118,7 +118,7 @@ void SLPA::outputCommunities(double thresh)
         Community_Map::iterator mapIt;
         //cout<<"Printing the communities of every node before post-processing\n";
         for (mapIt=coMap.begin(); mapIt!=coMap.end(); ++mapIt){
-            cout<<mapIt->first<<":"<<mapIt->second<<endl;
+            //cout<<mapIt->first<<":"<<mapIt->second<<endl;
             if((double)mapIt->second/total_count >= thresh) {
                 //cout<<id<<" is part of "<<mapIt->first<<" community\n";
                 final_communities[mapIt->first].push_back(id);
