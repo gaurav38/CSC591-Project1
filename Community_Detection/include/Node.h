@@ -4,7 +4,7 @@
 //#include "Graph.h"
 #include <iostream>
 #include <vector>
-#include <map>
+#include <tr1/unordered_map>
 #include <set>
 #include <cstdlib>
 
@@ -12,8 +12,8 @@ using namespace std;
 
 typedef unsigned int Label;
 typedef unsigned int NodeID;
-typedef std::map<Label, unsigned int> Community_Map;
-typedef std::map<Label, unsigned int> Listener_Map;
+typedef std::tr1::unordered_map<Label, unsigned int> Community_Map;
+typedef std::tr1::unordered_map<Label, unsigned int> Listener_Map;
 typedef vector<NodeID> Neighbors;
 typedef std::set<Label> MaxLabel;
 
@@ -31,8 +31,6 @@ public:
         void AddNeighbor(NodeID);
         /** Default destructor */
         //virtual ~Node();
-        Label Getlabel();
-        Neighbors Getneighbors();
         Community_Map getMyMap();
         /** Speaker;
          * \return a random lable with probability proportional to its occurence
@@ -62,14 +60,6 @@ public:
     protected:
     private:
         NodeID nodeID; //!<member variable "nodeID"
-
-        unsigned int getNodeID();
-        //void listen();
-
-    protected:
-    private:
-        //unsigned int nodeID;
-        //Label label; //!< Member variable "label"
         Neighbors neighbors; //!< Member variable "neighbors"
         Community_Map mymap; //!< Member variable "mymap"
         Listener_Map mylistener;  //!< Member variable "mylistener"

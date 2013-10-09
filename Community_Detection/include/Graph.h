@@ -15,12 +15,12 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include <map>
+#include <tr1/unordered_map>
 #include <cstdlib>
 #include "Node.h"
 
 using namespace std;
-typedef std::map<NodeID,Node *> NodeMap;
+typedef std::tr1::unordered_map<NodeID,Node *> NodeMap;
 
 class Graph{
 
@@ -35,7 +35,7 @@ public:
 	void readGraph();
 
 private:
-	void storeEdge(unsigned int from, unsigned int to);
+	void storeEdge(NodeID from, NodeID to);
 
 
 };

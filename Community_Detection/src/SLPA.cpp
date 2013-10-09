@@ -51,12 +51,13 @@ void SLPA::propagateLabels(int numIter){
 	}
 
 	for (int i=0;i<numIter;i++){
+        cout<<"------------------------------------------Iteration "<<i<<" ------------------------------------------\n";
 		//this reshuffling of node IDs in effect does marking all nodes unvisited
 		random_shuffle(randomNodeIDs.begin(),randomNodeIDs.end(),myrandom);
 		for (std::vector<unsigned>::iterator it=randomNodeIDs.begin(); it!=randomNodeIDs.end(); ++it){
 			Node *listener;
 			listener = theGraph->IDtoNodeMap[*it];
-			//cout<<"the listeners label is "<<listener->getNodeID()<<endl;
+			cout<<"----------- Current Listeners label is "<<listener->GetNodeID()<<"-----------"<<endl;
 			listener->listen();
 		}
 		//cout<<"Propagating labels iteration number = " <<i<<endl;
@@ -70,7 +71,7 @@ void SLPA::outputCommunities(double thresh)
         cout<<"Node ID for extracting community labels is " << nd->GetNodeID()<<endl;
         Community_Map coMap = nd->getMyMap();
         Community_Map::iterator mapIt;
-        for (std::map<Label,unsigned int>::iterator mapIt=coMap.begin(); mapIt!=coMap.end(); ++mapIt){
+        for (mapIt=coMap.begin(); mapIt!=coMap.end(); ++mapIt){
             cout<<" "<< mapIt->first;
         }
         cout<<endl;
