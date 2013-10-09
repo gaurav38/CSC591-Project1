@@ -1,18 +1,18 @@
 # depslib dependency file v1.0
-1381345913 source:c:\users\gaurav\documents\github\csc591-project1\community_detection\src\node.cpp
+1381349155 source:c:\users\gaurav\documents\github\csc591-project1\community_detection\src\node.cpp
 	"Node.h"
 	"Graph.h"
 	<tr1/unordered_map>
 	<vector>
 
-1381345940 c:\users\gaurav\documents\github\csc591-project1\community_detection\include\node.h
+1381349137 c:\users\gaurav\documents\github\csc591-project1\community_detection\include\node.h
 	<iostream>
 	<vector>
 	<tr1/unordered_map>
 	<set>
 	<cstdlib>
 
-1381337275 source:c:\users\gaurav\documents\github\csc591-project1\community_detection\src\main.cpp
+1381352463 source:c:\users\gaurav\documents\github\csc591-project1\community_detection\src\main.cpp
 	"Node.h"
 	"SLPA.h"
 	<iostream>
@@ -31,13 +31,16 @@
 	"Graph.h"
 	"Node.h"
 
-1381336612 c:\users\gaurav\documents\github\csc591-project1\community_detection\include\slpa.h
+1381352298 c:\users\gaurav\documents\github\csc591-project1\community_detection\include\slpa.h
 	"Graph.h"
 	"Node.h"
 	<tr1/unordered_map>
 	<tr1/random>
 	<algorithm>
+	<string>
+	<sstream>
+	<fstream>
 
-1381343445 source:c:\users\gaurav\documents\github\csc591-project1\community_detection\src\slpa.cpp
+1381352147 source:c:\users\gaurav\documents\github\csc591-project1\community_detection\src\slpa.cpp
 	"SLPA.h"
 

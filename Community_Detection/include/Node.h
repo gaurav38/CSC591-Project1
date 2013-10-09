@@ -47,6 +47,7 @@ public:
         void AddListenedLabel(Label);
         bool isLabelListened(Label);
         double doubleRand();
+        unsigned int getTotalCommunityCount();
         /** Listener;
          *  Adds a label to mymap depending on the labels
          *  listened from the neighbors

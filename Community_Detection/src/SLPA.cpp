@@ -8,10 +8,10 @@
 
 #include "SLPA.h"
 
-SLPA::SLPA(string inFileName){
+SLPA::SLPA(string inFileName, string outFileName){
 	inputFileName = inFileName;
+	outputFileName = outFileName;
 	theGraph = new Graph(inputFileName);
-
 }
 
 SLPA::~SLPA(){
@@ -64,18 +64,66 @@ void SLPA::propagateLabels(int numIter){
 	}
 }
 
+void SLPA::writeCommunities()
+{
+    ofstream outFile;
+    outFile.open(outputFileName.c_str(), ios::out);
+    cout<<"\n\nPrinting final communities to the output file\n";
+    cout<<"These values will be printed\n\n";
+    cout<<"-----------------------------------------------------\n";
+    cout<<"Community\t\t\tMember Nodes\n";
+    cout<<"-----------------------------------------------------\n";
+    outFile<<"-----------------------------------------------------\n";
+    outFile<<"Community\t\t\tMember Nodes\n";
+    outFile<<"-----------------------------------------------------\n";
+    Community::iterator it;
+    for(it = final_communities.begin(); it != final_communities.end(); ++it)
+    {
+        unsigned int temp = it->first;
+        stringstream ss;
+        ss << temp;
+        string com = ss.str();
+        std::vector<NodeID> nodes = it->second;
+        std::vector<NodeID>::iterator vit;
+        string node_list = string("\t\t\t\t");
+        for(vit = nodes.begin(); vit != nodes.end(); ++vit)
+        {
+            int node = *vit;
+            stringstream ss1;
+            ss1 << node;
+            string temp_node = ss1.str();
+            node_list.append(temp_node);
+            node_list.append(", ");
+        }
+        string final_string = com.append(node_list);
+        cout<<final_string<<endl;
+        //char *line = final_string.c_str();
+        outFile<<final_string.c_str()<<'\n';
+    }
+    outFile.close();
+    cout<<"-----------------------------------------------------\n";
+}
+
 void SLPA::outputCommunities(double thresh)
 {
     for (unsigned int i = 0; i < theGraph->NN; i++){
         Node* nd = Graph::getNode(i);
-        cout<<"Node ID for extracting community labels is " << nd->GetNodeID()<<endl;
+        NodeID id = nd->GetNodeID();
+        cout<<"Node ID for extracting community labels is " <<id<<endl;
         Community_Map coMap = nd->getMyMap();
+        unsigned int total_count = nd->getTotalCommunityCount();
         Community_Map::iterator mapIt;
+        cout<<"Printing the communities of every node before post-processing\n";
         for (mapIt=coMap.begin(); mapIt!=coMap.end(); ++mapIt){
-            cout<<" "<< mapIt->first;
+            cout<<mapIt->first<<":"<<mapIt->second<<endl;
+            if((double)mapIt->second/total_count >= thresh) {
+                cout<<id<<" is part of "<<mapIt->first<<" community\n";
+                final_communities[mapIt->first].push_back(id);
+            }
         }
         cout<<endl;
     }
+    writeCommunities();
 }
 
 

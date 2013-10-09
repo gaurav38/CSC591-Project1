@@ -13,19 +13,24 @@
 #include <tr1/unordered_map>
 #include <tr1/random>
 #include <algorithm>
+#include <string>
+#include <sstream>
+#include <fstream>
+
+typedef std::tr1::unordered_map<Label, std::vector<NodeID> > Community;
 
 class SLPA{
-
 public:
 	Graph* theGraph;
 	string inputFileName;
+    string outputFileName;
+    Community final_communities;
 
-
-
-	SLPA(string fileName);
+	SLPA(string, string);
 	virtual ~SLPA();
 	void propagateLabels(int numIterations);
 	void outputCommunities(double);
+	void writeCommunities();
 private:
 
 	unsigned int selectRandomNode();

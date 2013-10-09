@@ -202,4 +202,8 @@ Community_Map Node::getMyMap()
     return mymap;
 }
 
+unsigned int Node::getTotalCommunityCount()
+{
+    return community_count;
+}
 
