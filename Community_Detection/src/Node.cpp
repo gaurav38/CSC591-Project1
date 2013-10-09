@@ -162,9 +162,30 @@ void Node::listen()
 //}
 
 Label Node::speak(){
-	Label mostLabel = nodeID; //for now
+	Label mostLabel=nodeID;//returns most probable label
+	double randy = doubleRand();
+	double intervalEdge = 0;
+	cout<<"My random number randy = "<<randy<<endl;
+	Community_Map::iterator mapIt;
+	//for (mapIt = mymap.begin();mapIt!=mymap.end();mapIt++ ){
+	for (std::map<Label,unsigned int>::iterator mapIt=mymap.begin();mapIt!=mymap.end();++mapIt){
+		cout<<"mapIt returns "<<mapIt->first<<endl; //mapIt->first points to key
+		Label currentLabelCount = mapIt->second;  //points to value
+		intervalEdge = intervalEdge + ((double)currentLabelCount)/community_count;
+		if(randy<=intervalEdge){
+			return mostLabel;
+			cout<<"mostLabel returned by speak is "<<mostLabel;
+		}
+
+	}
 
 	return mostLabel;
+}
+
+double Node::doubleRand(){
+	//srand (time(NULL));
+	double f = (double)rand()/RAND_MAX;
+	return f;
 }
 
 //void Node::listen(){

@@ -6,6 +6,7 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <cstdlib>
 
 using namespace std;
 
@@ -54,6 +55,7 @@ public:
         unsigned int GetCommunityCount(Label);
         void AddListenedLabel(Label);
         bool isLabelListened(Label);
+        double doubleRand();
 
 
         /** Listener;
