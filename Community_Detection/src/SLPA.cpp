@@ -81,10 +81,10 @@ void SLPA::writeCommunities()
     Community::iterator it;
     for(it = final_communities.begin(); it != final_communities.end(); ++it)
     {
-        unsigned int temp = it->first;
-        stringstream ss;
-        ss << temp;
-        string com = ss.str();
+        //unsigned int temp = it->first;
+        //stringstream ss;
+        //ss << temp;
+        //string com = ss.str();
         std::vector<NodeID> nodes = it->second;
         std::vector<NodeID>::iterator vit;
         string node_list;
@@ -100,8 +100,12 @@ void SLPA::writeCommunities()
         //string final_string = com.append(node_list);
         //cout<<final_string<<endl;
         //char *line = final_string.c_str();
-        outFile<<node_list.c_str()<<'\n';
+        //outFile<<node_list.c_str()<<'\n';
+        final_set.insert(node_list);
     }
+    Set::iterator sit;
+    for(sit = final_set.begin(); sit!= final_set.end(); ++sit)
+        outFile<<*sit<<'\n';
     outFile.close();
     cout<<"Output file is ready\n";
     //cout<<"-----------------------------------------------------\n";

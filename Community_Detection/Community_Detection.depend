@@ -31,7 +31,7 @@
 	"Graph.h"
 	"Node.h"
 
-1381352298 c:\users\gaurav\documents\github\csc591-project1\community_detection\include\slpa.h
+1381452904 c:\users\gaurav\documents\github\csc591-project1\community_detection\include\slpa.h
 	"Graph.h"
 	"Node.h"
 	<tr1/unordered_map>
@@ -40,6 +40,7 @@
 	<string>
 	<sstream>
 	<fstream>
+	<set>
 
 1381352147 source:c:\users\gaurav\documents\github\csc591-project1\community_detection\src\slpa.cpp
 	"SLPA.h"
