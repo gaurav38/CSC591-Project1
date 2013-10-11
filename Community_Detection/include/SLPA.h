@@ -16,8 +16,10 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <set>
 
 typedef std::tr1::unordered_map<Label, std::vector<NodeID> > Community;
+typedef std::set<string> Set;
 
 class SLPA{
 public:
@@ -25,7 +27,7 @@ public:
 	string inputFileName;
     string outputFileName;
     Community final_communities;
-
+    Set final_set;
 	SLPA(string, string);
 	virtual ~SLPA();
 	void propagateLabels(int numIterations);
