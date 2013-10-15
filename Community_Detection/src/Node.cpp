@@ -3,10 +3,10 @@
 #include <tr1/unordered_map>
 #include <vector>
 
-Node::Node()
-{
+//Node::Node()
+//{
     //ctor
-}
+//}
 
 Node::Node(NodeID id)
 {
