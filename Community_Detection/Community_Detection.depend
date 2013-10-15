@@ -45,3 +45,32 @@
 1381352147 source:c:\users\gaurav\documents\github\csc591-project1\community_detection\src\slpa.cpp
 	"SLPA.h"
 
+1381695986 source:d:\padia's stuff\documents\github\csc591-project1\community_detection\src\node.cpp
+	"Node.h"
+	"Graph.h"
+	<tr1/unordered_map>
+	<vector>
+
+1381812126 d:\padia's stuff\documents\github\csc591-project1\community_detection\include\node.h
+	<iostream>
+	<vector>
+	<tr1/unordered_map>
+	<set>
+	<cstdlib>
+	"error.h"
+
+1381812126 d:\padia's stuff\documents\github\csc591-project1\community_detection\include\error.h
+	<iostream>
+	<cstdio>
+
+1381812126 d:\padia's stuff\documents\github\csc591-project1\community_detection\include\graph.h
+	<fstream>
+	<iostream>
+	<string>
+	<sstream>
+	<vector>
+	<tr1/unordered_map>
+	<cstdlib>
+	"Node.h"
+	"error.h"
+
