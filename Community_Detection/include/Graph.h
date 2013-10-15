@@ -2,9 +2,9 @@
  * Graph.h - Graph class will maintain the information about a graph (or network in other terms)
  * by loading from a file which lists: number of nodes, number of edges, which followed by edge list as a pair
  * (start_vertex_ID end_vertex_ID).
- *
- *
- *
+ * Author: Anatoli Melechko, Gaurav Saraf, Kalpesh Padia
+ * Based on algorithm by Jierui Xie and Boleslaw K. Szymanski published in
+ * "Towards Linear Time Overlapping Community Detection in Social Networks"
  */
 
 #ifndef GRAPH_H_

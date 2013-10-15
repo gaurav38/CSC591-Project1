@@ -1,6 +1,11 @@
 #ifndef NODE_H
 #define NODE_H
 
+/*
+ *      Author: Anatoli Melechko, Gaurav Saraf, Kalpesh Padia
+ *      Based on algorithm by Jierui Xie and Boleslaw K. Szymanski published in
+ *      "Towards Linear Time Overlapping Community Detection in Social Networks"
+ */
 #include <iostream>
 #include <vector>
 #include <tr1/unordered_map>

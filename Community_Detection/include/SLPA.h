@@ -2,7 +2,9 @@
  * SLPA.h
  *
  *  Created on: Oct 7, 2013
- *      Author: tolik
+ *  Author: Anatoli Melechko, Gaurav Saraf, Kalpesh Padia
+ *  Based on algorithm by Jierui Xie and Boleslaw K. Szymanski published in
+ *  "Towards Linear Time Overlapping Community Detection in Social Networks"
  */
 
 #ifndef SLPA_H_

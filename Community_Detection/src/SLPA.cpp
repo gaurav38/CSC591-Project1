@@ -2,7 +2,9 @@
  * SLPA.cpp is the business part of Speaker-listener Label Propagation Algorithm (SLPA).
  *
  *  Created on: Oct 7, 2013
- *      Author: tolik, kpadia
+ *  Author: Anatoli Melechko, Gaurav Saraf, Kalpesh Padia
+ *  Based on algorithm by Jierui Xie and Boleslaw K. Szymanski published in
+ *  "Towards Linear Time Overlapping Community Detection in Social Networks"
  *
  */
 

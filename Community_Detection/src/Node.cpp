@@ -1,3 +1,8 @@
+/*
+ *      Author: Anatoli Melechko, Gaurav Saraf, Kalpesh Padia
+ *      Based on algorithm by Jierui Xie and Boleslaw K. Szymanski published in
+ *      "Towards Linear Time Overlapping Community Detection in Social Networks"
+ */
 #include "Node.h"
 #include "Graph.h"
 #include <tr1/unordered_map>
