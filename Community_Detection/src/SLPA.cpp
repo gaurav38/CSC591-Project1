@@ -18,7 +18,7 @@ SLPA::SLPA(string inFileName, string outFileName){
 }
 
 SLPA::~SLPA(){
-
+    delete theGraph;
 }
 
 /*
@@ -131,6 +131,10 @@ void SLPA::outputCommunities(double thresh)
                 final_communities[mapIt->first].push_back(id);
             }
         }
+    }
+    for (unsigned int i = 0; i < theGraph->NN; i++){
+        Node* nd = Graph::getNode(i);
+        delete nd;
     }
     writeCommunities();
 }
