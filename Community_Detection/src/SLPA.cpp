@@ -54,8 +54,6 @@ void shuffle(unsigned int*& a, unsigned int max)
 
 void SLPA::propagateLabels(int numIter)
 {
-
-    //unsigned int randID;
     unsigned int numNodes = theGraph->NN;
     unsigned int* randomNodeIDs = new unsigned int[numNodes];
     if (!randomNodeIDs)
@@ -74,10 +72,8 @@ void SLPA::propagateLabels(int numIter)
         {
             Node *listener;
             listener = theGraph->IDtoNodeMap[randomNodeIDs[j]];
-            //cout<<"----------- Current Listeners label is "<<listener->GetNodeID()<<"-----------"<<endl;
             listener->listen();
         }
-        //cout<<"Propagating labels iteration number = " <<i<<endl;
     }
     
     delete[] randomNodeIDs;
@@ -86,25 +82,10 @@ void SLPA::propagateLabels(int numIter)
 void SLPA::writeCommunities()
 {
     ostringstream os;
-    //ofstream outFile;
-    //outFile.open(outputFileName.c_str(), ios::out);
     cout<<"\n\nPrinting final communities to the output file\n";
-    /*
-    cout<<"These values will be printed\n\n";
-    cout<<"-----------------------------------------------------\n";
-    cout<<"Community\t\t\tMember Nodes\n";
-    cout<<"-----------------------------------------------------\n";
-    outFile<<"-----------------------------------------------------\n";
-    outFile<<"Community\t\t\tMember Nodes\n";
-    outFile<<"-----------------------------------------------------\n";
-    */
     Community::iterator it;
     for(it = final_communities.begin(); it != final_communities.end(); ++it)
     {
-        //unsigned int temp = it->first;
-        //stringstream ss;
-        //ss << temp;
-        //string com = ss.str();
         std::vector<NodeID> nodes = it->second;
         std::vector<NodeID>::iterator vit;
         string node_list;
@@ -117,10 +98,6 @@ void SLPA::writeCommunities()
             node_list.append(temp_node);
             node_list.append(" ");
         }
-        //string final_string = com.append(node_list);
-        //cout<<final_string<<endl;
-        //char *line = final_string.c_str();
-        //outFile<<node_list.c_str()<<'\n';
         final_set.insert(node_list);
     }
     Set::iterator sit;
@@ -139,7 +116,6 @@ void SLPA::writeCommunities()
     close(outFile);
     
     cout<<"Output file is ready\n";
-    //cout<<"-----------------------------------------------------\n";
 }
 
 void SLPA::outputCommunities(double thresh)
@@ -147,19 +123,14 @@ void SLPA::outputCommunities(double thresh)
     for (unsigned int i = 0; i < theGraph->NN; i++){
         Node* nd = Graph::getNode(i);
         NodeID id = nd->GetNodeID();
-        //cout<<"Node ID for extracting community labels is " <<id<<endl;
         Community_Map coMap = nd->getMyMap();
         unsigned int total_count = nd->getTotalCommunityCount();
         Community_Map::iterator mapIt;
-        //cout<<"Printing the communities of every node before post-processing\n";
         for (mapIt=coMap.begin(); mapIt!=coMap.end(); ++mapIt){
-            //cout<<mapIt->first<<":"<<mapIt->second<<endl;
             if((double)mapIt->second/total_count >= thresh) {
-                //cout<<id<<" is part of "<<mapIt->first<<" community\n";
                 final_communities[mapIt->first].push_back(id);
             }
         }
-        //cout<<endl;
     }
     writeCommunities();
 }

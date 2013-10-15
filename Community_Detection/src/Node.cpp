@@ -8,21 +8,12 @@ Node::Node()
     //ctor
 }
 
-//Node::Node(Label node_ID)
-//{
-//    nodeID = node_ID;
-//    mymap[nodeID] = 1;
-//    community_count++;
-//    maxlabel.insert(1);
-//}
-
 Node::Node(NodeID id)
 {
     nodeID = id;
     mymap[nodeID] = 1;
     community_count = 1;
     listen_count = 0;
-    //maxlabel.insert(1);
 }
 
 Node::~Node()
@@ -111,15 +102,12 @@ bool Node::isLabelListened(Label x)
 
 Label Node::getPopularLabel()
 {
-    //cout<<"My total count is "<<listen_count<<endl;
     Label max_label = mylistener.begin()->first;
     float max_popular_probability = (float)mylistener.begin()->second/listen_count;
-    //cout<<"Following labels listened\n";
     for(Listener_Map::iterator it = mylistener.begin(); it != mylistener.end(); ++it)
     {
         Label current_label = it->first;
         unsigned int current_label_count = it->second;
-        //cout<<current_label<<'\t'<<current_label_count<<endl;
         float current_probability = (float)current_label_count/listen_count;
         if(current_probability > max_popular_probability)
         {
@@ -132,15 +120,7 @@ Label Node::getPopularLabel()
 
 void Node::listen()
 {
-    //int total_neighbors = neighbors.size();
-    /*
-    cout<<"Printing neighbors for Node: "<<GetNodeID()<<'\n';
-    for(Neighbors::iterator it = neighbors.begin(); it != neighbors.end(); ++it)
-        cout<<*it<<'\t';
-    cout<<'\n';
-    */
     int i = 0;
-    //Node *node[total_neighbors]; //initialize an array to store pointer to neighbors
     for(Neighbors::iterator it = neighbors.begin(); it != neighbors.end(); ++it)
     {
         Node* node = Graph::getNode(*it);
@@ -152,11 +132,8 @@ void Node::listen()
         listen_count++;
         i++;
     }
-    //cout<<"Finished listening labels\n";
     // End of listening phase
-    // Get the most popular listened label
     Label popular_label = getPopularLabel();
-    //cout<<"Adding community "<<popular_label<<" to the list of communities\n";
     // Add the popular_label to mymap
     if(isCommunityPresent(popular_label))
         mymap[popular_label]++;
@@ -167,24 +144,17 @@ void Node::listen()
     mylistener.clear();
 }
 
-//void Node::listen(){
-//	cout<<"I am node " << nodeID << " and I am listening"<<endl;
-//}
 
 Label Node::speak(){
-    //cout<<"Node "<<nodeID<<" is speaking"<<endl;
 	Label mostLabel=nodeID;//returns most probable label
 	double randy = doubleRand();
-	//cout<<"Randy is "<<randy<<endl;
 	double intervalEdge = 0;
 	Community_Map::iterator mapIt;
 	for (mapIt = mymap.begin(); mapIt!=mymap.end(); ++mapIt){
 		Label currentLabel = mapIt->first;
 		unsigned int currentLabelCount = mapIt->second;  //points to value
 		intervalEdge = intervalEdge + ((double)currentLabelCount)/community_count;
-		//cout<<"------------------intervalEdge = "<< intervalEdge<<endl;
 		if(randy<=intervalEdge){
-			//cout<<"mostLabel returned by speak is "<<currentLabel<<endl;
 			return currentLabel;
 		}
 
@@ -194,7 +164,6 @@ Label Node::speak(){
 }
 
 double Node::doubleRand(){
-	//srand (time(NULL));
 	double f = (double)rand()/RAND_MAX;
 	return f;
 }

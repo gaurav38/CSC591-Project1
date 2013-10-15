@@ -1,7 +1,6 @@
 #ifndef NODE_H
 #define NODE_H
 
-//#include "Graph.h"
 #include <iostream>
 #include <vector>
 #include <tr1/unordered_map>

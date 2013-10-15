@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
 {
     SLPA* theSLPA;
 
-    if(argc < 5)
+    if(argc != 5)
     {
         cout<<"Usage: \n"<<argv[0]<<" <input graph> <iterations> <output file> <threshold>\n";
         cout<<"Example:\n"<<argv[0]<<" amazon.graph 100 amazon.output 0.4\n";
