@@ -31,11 +31,11 @@ local.properties
 ##############
 ## Codeblocks
 ##############
-*.cbp
-*.depend
-*.layout
-[Bb]in/
-[Oo]bj/
+*/*.cbp
+*/*.depend
+*/*.layout
+*/[Bb]in/
+*/[Oo]bj/
 
 #################
 ## Visual Studio
