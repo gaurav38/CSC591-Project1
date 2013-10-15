@@ -17,6 +17,7 @@
 #include <sstream>
 #include <fstream>
 #include <set>
+#include "error.h"
 
 typedef std::tr1::unordered_map<Label, std::vector<NodeID> > Community;
 typedef std::set<string> Set;

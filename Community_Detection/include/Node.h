@@ -7,6 +7,7 @@
 #include <tr1/unordered_map>
 #include <set>
 #include <cstdlib>
+#include "error.h"
 
 using namespace std;
 

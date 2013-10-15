@@ -2,16 +2,16 @@
  * SLPA.cpp is the business part of Speaker-listener Label Propagation Algorithm (SLPA).
  *
  *  Created on: Oct 7, 2013
- *      Author: tolik
+ *      Author: tolik, kpadia
  *
  */
 
 #include "SLPA.h"
 
 SLPA::SLPA(string inFileName, string outFileName){
-	inputFileName = inFileName;
-	outputFileName = outFileName;
-	theGraph = new Graph(inputFileName);
+    inputFileName = inFileName;
+    outputFileName = outFileName;
+    theGraph = new Graph(inputFileName);
 }
 
 SLPA::~SLPA(){
@@ -25,43 +25,59 @@ SLPA::~SLPA(){
  * THRESH - postprocessing threshold
  * 1) At t=0, the memory of each node is initialized with its node id
  * 2) For t=1:T
- * 		All nodes are marked unvisited
- * 		While (there is any unvisited node)
- * 		a. One unvisited node is randomly selected as a listener.
- * 		b. Each neighbor (speaker) of the selected node randomly selects label
- * 			with probability proportional to the occurance frequency in the memory
- * 			and sends the selected label to the listener
- * 		c. The listener adds the most popular label received to its memory.
- * 		d. Mark the listener visited
+ *         All nodes are marked unvisited
+ *         While (there is any unvisited node)
+ *         a. One unvisited node is randomly selected as a listener.
+ *         b. Each neighbor (speaker) of the selected node randomly selects label
+ *             with probability proportional to the occurance frequency in the memory
+ *             and sends the selected label to the listener
+ *         c. The listener adds the most popular label received to its memory.
+ *         d. Mark the listener visited
  * 3) The post-processing based on the labels in the memories and the threshold THRESH
- * 		is applied to output the communities
+ *         is applied to output the communities
  */
-int myrandom (int i){return std::rand()%i;}
+//uses a Fisher-Yates shuffle
+void shuffle(unsigned int*& a, unsigned int max)
+{
+    unsigned int r, temp;
+    for (unsigned int i = max-1;i>0;i--)
+    {
+        r = rand()%i;
+        temp = a[r];
+        a[r] = a[i];
+        a[i] = temp;
+    }
+}
 
-void SLPA::propagateLabels(int numIter){
+void SLPA::propagateLabels(int numIter)
+{
 
-	//unsigned int randID;
-	vector<unsigned> randomNodeIDs;
-	//http://www.cplusplus.com/reference/algorithm/random_shuffle/
-	unsigned int numNodes = theGraph->NN;
-	cout<<"number of nodes numNodes = "<<numNodes<<endl;
-	for (unsigned int j=0;j<numNodes;j++){
-	//for (unsigned int j=0;j<theGraph->NN;j++){
-		randomNodeIDs.push_back(j);
-	}
+    //unsigned int randID;
+    unsigned int numNodes = theGraph->NN;
+    unsigned int* randomNodeIDs = new unsigned int[numNodes];
+    if (!randomNodeIDs)
+    {
+        handle_error("new",ERR_MEMORY_ALLOC);
+    }
+    
+    for (unsigned int i = 0;i<numNodes;i++)
+        randomNodeIDs[i] = i;
 
-	for (int i=0;i<numIter;i++){
-        //cout<<"------------------------------------------Iteration "<<i<<" ------------------------------------------\n";
-		//this reshuffling of node IDs in effect does marking all nodes unvisited
-		random_shuffle(randomNodeIDs.begin(),randomNodeIDs.end(),myrandom);
-		for (std::vector<unsigned>::iterator it=randomNodeIDs.begin(); it!=randomNodeIDs.end(); ++it){
-			Node *listener;
-			listener = theGraph->IDtoNodeMap[*it];
-			//cout<<"----------- Current Listeners label is "<<listener->GetNodeID()<<"-----------"<<endl;
-			listener->listen();
-		}
-		//cout<<"Propagating labels iteration number = " <<i<<endl;
-	}
+    for (int i=0;i<numIter;i++)
+    {
+        //this reshuffling of node IDs in effect does marking all nodes unvisited
+        shuffle(randomNodeIDs, numNodes);
+        for (unsigned int j=0;j<numNodes;j++)
+        {
+            Node *listener;
+            listener = theGraph->IDtoNodeMap[randomNodeIDs[j]];
+            //cout<<"----------- Current Listeners label is "<<listener->GetNodeID()<<"-----------"<<endl;
+            listener->listen();
+        }
+        //cout<<"Propagating labels iteration number = " <<i<<endl;
+    }
+    
+    delete[] randomNodeIDs;
 }
 
 void SLPA::writeCommunities()

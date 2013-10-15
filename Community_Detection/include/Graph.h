@@ -18,17 +18,18 @@
 #include <tr1/unordered_map>
 #include <cstdlib>
 #include "Node.h"
+#include "error.h"
 
 using namespace std;
 typedef std::tr1::unordered_map<NodeID,Node *> NodeMap;
 
-class Graph{
-
+class Graph
+{
 public:
 	unsigned int NN; //total number of nodes in the graph
 	unsigned int NE; //total number of edges in the graph
 	static NodeMap IDtoNodeMap;
-    static Node * getNode(NodeID);
+    static Node* getNode(NodeID);
 	string inputFileName;
 	Graph(string inputFileName);
 	virtual ~Graph();
