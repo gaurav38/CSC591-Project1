@@ -7,6 +7,9 @@
  */
 
 #include "SLPA.h"
+#include<sys/mman.h>
+#include<sys/stat.h>
+#include<fcntl.h>
 
 SLPA::SLPA(string inFileName, string outFileName){
     inputFileName = inFileName;
@@ -82,8 +85,9 @@ void SLPA::propagateLabels(int numIter)
 
 void SLPA::writeCommunities()
 {
-    ofstream outFile;
-    outFile.open(outputFileName.c_str(), ios::out);
+    ostringstream os;
+    //ofstream outFile;
+    //outFile.open(outputFileName.c_str(), ios::out);
     cout<<"\n\nPrinting final communities to the output file\n";
     /*
     cout<<"These values will be printed\n\n";
@@ -121,8 +125,19 @@ void SLPA::writeCommunities()
     }
     Set::iterator sit;
     for(sit = final_set.begin(); sit!= final_set.end(); ++sit)
-        outFile<<*sit<<'\n';
-    outFile.close();
+        os<<*sit<<'\n';
+    
+    int outFile = open (outputFileName.c_str(), O_RDWR | O_CREAT,S_IRUSR|S_IWUSR);
+    ftruncate(outFile, os.str().length());
+    if (outFile == -1)
+        handle_error("open",ERR_OPENING_FILE);
+    char* mem = (char*) mmap (NULL, os.str().length(), PROT_WRITE, MAP_SHARED, outFile, 0);
+    if (mem == MAP_FAILED)
+        handle_error("mmap");
+    sprintf(mem,"%s",os.str().c_str());
+    munmap(mem,os.str().length());
+    close(outFile);
+    
     cout<<"Output file is ready\n";
     //cout<<"-----------------------------------------------------\n";
 }

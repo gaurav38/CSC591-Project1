@@ -132,7 +132,7 @@ Label Node::getPopularLabel()
 
 void Node::listen()
 {
-    int total_neighbors = neighbors.size();
+    //int total_neighbors = neighbors.size();
     /*
     cout<<"Printing neighbors for Node: "<<GetNodeID()<<'\n';
     for(Neighbors::iterator it = neighbors.begin(); it != neighbors.end(); ++it)
@@ -140,11 +140,11 @@ void Node::listen()
     cout<<'\n';
     */
     int i = 0;
-    Node *node[total_neighbors]; //initialize an array to store pointer to neighbors
+    //Node *node[total_neighbors]; //initialize an array to store pointer to neighbors
     for(Neighbors::iterator it = neighbors.begin(); it != neighbors.end(); ++it)
     {
-        node[i] = Graph::getNode(*it);
-        Label listened_label = node[i]->speak();
+        Node* node = Graph::getNode(*it);
+        Label listened_label = node->speak();
         if(isLabelListened(listened_label))
             mylistener[listened_label]++;
         else
